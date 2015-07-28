@@ -34,6 +34,8 @@ public final class Slot implements Serializable {
     private long value;
     @Column(nullable = false)
     private String type;
+    @Column(nullable = false)
+    private long netValue;
 
     public String getCode() {
         return code;
@@ -107,6 +109,14 @@ public final class Slot implements Serializable {
         this.type = type;
     }
 
+    public long getNetValue() {
+        return netValue;
+    }
+
+    public void setNetValue(long netValue) {
+        this.netValue = netValue;
+    }
+
     public Slot() {
 
     }
@@ -115,15 +125,15 @@ public final class Slot implements Serializable {
     public String toString() {
         StringBuffer buff = new StringBuffer();
 
-        buff.append("[code: "+ code +"],");
-        buff.append("[name: "+ name +"],");
-        buff.append("[date: "+ date +"],");
-        buff.append("[price: "+ price +"],");
-        buff.append("[change: "+ change +"],");
-        buff.append("[changePercentage: "+ changePercentage +"],");
-        buff.append("[volume: "+ volume +"],");
-        buff.append("[value: "+ value +"],");
-        buff.append("[type: "+ type +"]");
+        buff.append("[code: " + code + "],");
+        buff.append("[name: " + name + "],");
+        buff.append("[date: " + date + "],");
+        buff.append("[price: " + price + "],");
+        buff.append("[change: " + change + "],");
+        buff.append("[changePercentage: " + changePercentage + "],");
+        buff.append("[volume: " + volume + "],");
+        buff.append("[value: " + value + "],");
+        buff.append("[type: " + type + "]");
 
         return buff.toString();
     }

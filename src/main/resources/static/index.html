@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Cocoon App.</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(function() {
+            drawChart();
+            drawNetValueChart();
+        });
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Mon', 20, 28, 38, 45],
+                ['Tue', 31, 38, 55, 66],
+                ['Wed', 50, 55, 77, 80],
+                ['Thu', 77, 77, 66, 50],
+                ['Fri', 68, 66, 22, 15]
+                // Treat first row as data as well.
+            ], true);
+
+            var options = {
+                legend:'none'
+            };
+
+            var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+
+        function drawNetValueChart() {
+            $.getJSON('rest/matrix/netvalue/600316', {}, function(response) {
+                var matrix = [['Date', 'Net Value', { role: 'style' }]];
+                $.each(response, function(k, v) {
+                    matrix.push(v);
+                })
+                console.log(matrix);
+                var data = google.visualization.arrayToDataTable(matrix);
+
+                var option = {
+                    legend:'none'
+                };
+
+                var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+                chart2.draw(data, option);
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="chart_div" style="width: 1200px; height: 300px;"></div>
+<div id="chart_div2" style="width: 1200px; height: 300px;"></div>
+</body>
+</html>

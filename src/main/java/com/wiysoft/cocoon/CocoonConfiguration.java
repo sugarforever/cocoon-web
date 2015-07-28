@@ -24,6 +24,9 @@ public class CocoonConfiguration {
 
     private String holidays;
     private String codes;
+    private String fixedRateString;
+    private String scheduledExpression;
+    private String firstDay;
 
     public void setHolidays(String holidays) {
         this.holidays = holidays;
@@ -39,6 +42,30 @@ public class CocoonConfiguration {
 
     public String getCodes() {
         return codes;
+    }
+
+    public String getFixedRateString() {
+        return fixedRateString;
+    }
+
+    public void setFixedRateString(String fixedRateString) {
+        this.fixedRateString = fixedRateString;
+    }
+
+    public String getScheduledExpression() {
+        return scheduledExpression;
+    }
+
+    public void setScheduledExpression(String scheduledExpression) {
+        this.scheduledExpression = scheduledExpression;
+    }
+
+    public String getFirstDay() {
+        return firstDay;
+    }
+
+    public void setFirstDay(String firstDay) {
+        this.firstDay = firstDay;
     }
 
     public String[] getHolidaysArray() {

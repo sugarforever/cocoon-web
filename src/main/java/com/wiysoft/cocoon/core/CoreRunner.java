@@ -64,6 +64,13 @@ public class CoreRunner implements Runner {
                 slot.setType(entry.getType());
                 slot.setValue(entry.getValue());
                 slot.setVolume(entry.getVolume());
+                if (slot.getType().equals("b")) {
+                    slot.setNetValue(entry.getValue());
+                } else if (slot.getType().equals("s")) {
+                    slot.setNetValue(-1 * entry.getValue());
+                } else {
+                    slot.setNetValue(0);
+                }
 
                 slots.add(slot);
             }
